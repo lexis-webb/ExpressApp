@@ -1,5 +1,6 @@
 {
     "firstName" : "Kim",
     "lastName" : "Washington",
-    "age" : 17
+    "age" : 17,
+    "occupation" : "Clerk"
 }
