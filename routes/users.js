@@ -1,21 +1,9 @@
 import express from 'express';
+import { v4 as uuidv4 } from 'uuid';
+uuidv4(); // a '9b1deb4d-3b7d-4bad-9bdd-2b0d7b3dcb6d'
+const router = express. Router ();
 
-const router = express.Router();
-
-const users = [
-    {
-        firstName : "Kim",
-        lastname : "Washington",
-        age : 17,
-        occupation : "Clerk"
-    },
-    {
-        firstName : "Johnny",
-        lastname : "Fields",
-        age : 37,
-        occupation : "Baker"
-    }
-]
+const users = [];
 
 router.get('/', (req,res) => {
     console.log(users);
@@ -26,10 +14,14 @@ router.get('/', (req,res) => {
 router.post('/', (req, res) => {
   const user = req.body;
 
-    users.push(user);
+    users.push({ ...user, id: uuidv4() });
 
     res.send(`User with the name ${user.firstName} added to the Database`);
 });
+
+router.get('/:id', (req, res) => {
+    res.send('GET ID ROUTE');
+})
 
 
 export default router;
